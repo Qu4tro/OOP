@@ -1,4 +1,7 @@
 *.class
+*.bluej
+.*.swp
+.*.un~
 
 # Package Files #
 *.jar
