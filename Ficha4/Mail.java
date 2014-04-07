@@ -1,4 +1,5 @@
 import java.util.GregorianCalendar;
+import java.lang.StringBuilder;
 
 
 public class Mail
@@ -31,14 +32,28 @@ public class Mail
         return m;
     }
 
-    public Mail equals(Object o){
+    public boolean equals(Object o){
         if (this == o)
             return true;
         if ((o == null) || (this.getClass() != o.getClass()))
             return false;
 
+        Mail m = (Mail) o;
+        if (this.address == m.getAddress() && this.subject == m.getSubject() && this.body == m.getBody())
+            return true;
 
+        return false;
+    }
 
+    public String toString()
+    {
+        StringBuilder s = new StringBuilder();
+
+        s.append(this.address);
+        s.append(" -> ");
+        s.append(this.subject);
+
+        return s.toString();
     }
 
     public String getAddress()
