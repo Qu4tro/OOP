@@ -1,65 +1,63 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.lang.StringBuilder;
+
+//TODO
 
 public class Ex07InsertAndRemove {
 
     public static void main(String[] args) {
         
-        String[] words = getStringsUntil("zzz");
-        printNonNull(words);
-        String[] toBeErased = getStringsUntil("xxx");
+        String untilZZZ = getStringsUntil("zzz");
+        String untilXXX = getStringsUntil("xxx");
 
-        for (String str : toBeErased) {
-            if (!(str == null))
-                remove(words, Arrays.binarySearch(words, str));
+        String[] words = untilZZZ.split("\n");
+        String[] toErase = untilXXX.split("\n");
+
+        for (String erasing : toErase) {
+            words = removeElement(words, erasing);
         }
 
-        printNonNull(words);
+        System.out.println(Arrays.toString(words));
 
     }
 
-    public static void printNonNull(String[] array){
-    
-        for (String str : array) {
-            if (!(str == null))
-                System.out.print(str + ", ");
-        }
-
-        System.out.println("");
-    }
-
-    public static String[] getStringsUntil(String delimiter){
+    public static String getStringsUntil(String delimiter){
     
         Scanner sc = new Scanner(System.in);
-        String[] array = new String[1000];
+        StringBuilder sb = new StringBuilder();
+        String temp;
 
-        int i = 0;
         while (true){
 
-            array[i] = sc.nextLine();
-            
-            if (array[i].equals(delimiter)){
-                array[i] = null;
+            temp = sc.nextLine();
+            if (temp.equals(delimiter)){
                 break;
             }
-            i += 1;
+            sb.append(temp);
+            sb.append("\n");
         }
 
-        return array;
+        return sb.toString();
     }
 
-    public static String[] remove(String[] array, int index){
+    public static String[] removeElement(String[] original, String element){
 
-        if (index < 0)
-            return array;
-    
-        for(int i = array.length; i > index; i--) {
-            array[i - 1] = array[i];
-        }
+          String[] n = new String[original.length - 1];
+          int i;
 
-        array[array.length] = null;
-    
-        return array;
+          for(i = 0; !(original[i].equals(element)); i++) {
+
+              if (i == original.length - 1){
+                  return original;
+              }
+
+              n[i] = original[i];
+          }
+          for(; i < original.length - 1; i++) {
+              n[i] = original[i + 1];
+          }
+
+          return n;
     }
-    
 }
