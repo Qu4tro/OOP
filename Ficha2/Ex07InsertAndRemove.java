@@ -2,8 +2,6 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.lang.StringBuilder;
 
-//TODO
-
 public class Ex07InsertAndRemove {
 
     public static void main(String[] args) {
