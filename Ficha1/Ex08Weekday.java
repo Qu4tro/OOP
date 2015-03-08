@@ -39,7 +39,7 @@ public class Ex08Weekday {
         if ((month == 1 || month == 2) && isLeapYear(year))
             weekday--;
         // iv
-        for(int i = 0; i < month; i++)
+        for(int i = 0; i < month - 1; i++)
             weekday += daysInMonth[i];
         weekday += day;
 
