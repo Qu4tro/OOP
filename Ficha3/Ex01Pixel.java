@@ -21,6 +21,12 @@ class Pixel{
     
     }
 
+    Pixel(Pixel pixel){
+        this.x = pixel.getX();
+        this.y = pixel.getY();
+        this.cor = pixel.getColor();
+    }
+
     public void moveLeft(int value){
         this.x -= value;
     }
@@ -115,16 +121,14 @@ class Pixel{
         if (this.x == pixel.getX() && 
             this.y == pixel.getY() &&
             this.cor == pixel.getColor()){
-        return true;
+            return true;
         }
 
         return false;
     }
 
     public Pixel clone(){
-        Pixel pixel = new Pixel(this.x, this.y, this.cor);
-
-        return pixel;
+        return new Pixel(this);
     }
 
 
@@ -134,8 +138,13 @@ public class Ex01Pixel {
 
     public static void main(String[] args) {
 
-        Pixel pixel = new Pixel(4, 4, 4);
-        System.out.print(pixel);
+        Pixel pixel1 = new Pixel(4, 4, 4);
+        Pixel pixel2;
+        pixel2 = pixel1.clone();
+        System.out.print(pixel1);
+        System.out.print(pixel2);
+        System.out.print(pixel1.equals(pixel2));
+
     }
     
 }

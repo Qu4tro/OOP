@@ -1,8 +1,6 @@
-
 import java.lang.StringBuilder;
 
-public class Veiculo
-{
+public class Veiculo {
 
     private double quilometragem;
     private String matricula;
@@ -11,8 +9,7 @@ public class Veiculo
     private double consumoMedio;
     private int nViagens;
 
-    public Veiculo()
-    {
+    public Veiculo() {
         this.matricula     = "";
         this.quilometragem = 0.0;
         this.capacidade    = 0.0;
@@ -21,8 +18,7 @@ public class Veiculo
         this.nViagens      = 0;
     }
 
-    public Veiculo(Veiculo v)
-    {
+    public Veiculo(Veiculo v) {
         this.quilometragem = v.getQuilometragem();
         this.matricula     = v.getMatricula();
         this.capacidade    = v.getCapacidade();
@@ -31,43 +27,36 @@ public class Veiculo
         this.nViagens      = v.getNViagens();
     }
 
-    public double quantosQuilometros()
-    {
+    public double quantosQuilometros() {
         return (100 * this.deposito) / this.consumoMedio;
     }
 
-    public void novaViagem(double quilometros)
-    {
+    public void novaViagem(double quilometros) {
         this.quilometragem += quilometros;
         this.nViagens++;
         this.deposito -= (quilometros * this.consumoMedio)/100;
     }
 
-    public boolean naReserva()
-    {
+    public boolean naReserva() {
         int reserva = 10;
         return this.deposito <= reserva;
     }
 
-    public double custoMedioPorKM(double custoMedio)
-    {
+    public double custoMedioPorKM(double custoMedio) {
         return (this.consumoMedio/100) * custoMedio;
     }
 
-    public double custoTotal(double custoMedio)
-    {
+    public double custoTotal(double custoMedio) {
         return custoMedioPorKM(custoMedio)*this.quilometragem;
     }
 
-    public void encherDeposito(double L)
-    {
+    public void encherDeposito(double L) {
         this.deposito += L;
         if (this.deposito > this.capacidade)
             this.deposito = this.capacidade;
     }
 
-    public String toString()
-    {
+    public String toString() {
         StringBuilder s = new StringBuilder();
 
         s.append("Veiculo: \n");
@@ -76,14 +65,12 @@ public class Veiculo
         return s.toString();
     }
 
-    public Veiculo clone()
-    {
+    public Veiculo clone() {
         Veiculo v = new Veiculo(this);
         return v;
     }
 
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o)
             return true;
         if (( o == null) || (this.getClass() != o.getClass()))
