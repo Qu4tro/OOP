@@ -107,12 +107,24 @@ class Pixel{
         return sb.toString();
     }
 
-    public boolean equals(){
+    public boolean equals(Pixel pixel){
+
+        if (pixel == null){
+            return false;
+        }
+        if (this.x == pixel.getX() && 
+            this.y == pixel.getY() &&
+            this.cor == pixel.getColor()){
         return true;
+        }
+
+        return false;
     }
 
     public Pixel clone(){
-        return null;
+        Pixel pixel = new Pixel(this.x, this.y, this.cor);
+
+        return pixel;
     }
 
 
