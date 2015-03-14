@@ -127,6 +127,8 @@ class Veiculo {
 public class Ex03Veiculo {
     
     public static void main(String[] args) {
+
+        // TODO: Equals and Testing on Main
         
     }
 }

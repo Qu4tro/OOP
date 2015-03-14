@@ -101,6 +101,8 @@ public class Ex02Segmento {
         Segmento segmento = new Segmento(0, 0, 1, 1);
         System.out.println(segmento);
         System.out.println(segmento.comprimento());
+
+        // TODO: Better equals and better testing
         
     }
 

@@ -145,6 +145,7 @@ public class Ex01Pixel {
         System.out.print(pixel2);
         System.out.print(pixel1.equals(pixel2));
 
+        // TODO: Better testing and equals?
     }
     
 }
