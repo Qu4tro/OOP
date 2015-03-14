@@ -1,6 +1,6 @@
 import java.lang.StringBuilder;
 
-public class Veiculo {
+class Veiculo {
 
     private double quilometragem;
     private String matricula;
@@ -59,7 +59,7 @@ public class Veiculo {
     public String toString() {
         StringBuilder s = new StringBuilder();
 
-        s.append("Veiculo: \n");
+        s.append("Veiculo: ");
         s.append(this.matricula);
 
         return s.toString();
@@ -70,12 +70,20 @@ public class Veiculo {
         return v;
     }
 
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (( o == null) || (this.getClass() != o.getClass()))
+    // public boolean equals(Object o) {
+    //     if (this == o)
+    //         return true;
+    //     if (( o == null) || (this.getClass() != o.getClass()))
+    //         return false;
+    //     Veiculo v = (Veiculo) o;
+    //     return (this.matricula == v.getMatricula());
+    // }
+    
+    public boolean equals(Veiculo v) {
+
+        if (v == null){
             return false;
-        Veiculo v = (Veiculo) o;
+        }
         return (this.matricula == v.getMatricula());
     }
 
@@ -114,4 +122,11 @@ public class Veiculo {
 
     public void setNViagens()
     { this.nViagens = nViagens; }
+}
+
+public class Ex03Veiculo {
+    
+    public static void main(String[] args) {
+        
+    }
 }
