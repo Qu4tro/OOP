@@ -157,16 +157,16 @@ class Rectangulo {
     
 
     public Point getP1() {
-        return p1;
+        return p1.clone();
     }
     public Point getP2() {
-        return p2;
+        return p2.clone();
     }
     public Point getP3() {
-        return p3;
+        return p3.clone();
     }
     public Point getP4() {
-        return p4;
+        return p4.clone();
     }
 
     public void setP1(Point p1) {
