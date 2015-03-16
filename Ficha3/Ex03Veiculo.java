@@ -18,6 +18,16 @@ class Veiculo {
         this.nViagens      = 0;
     }
 
+    public Veiculo(String matricula, double capacidade) {
+        this.matricula     = matricula;
+        this.quilometragem = 0.0;
+        this.capacidade    = capacidade;
+        this.deposito      = 0.0;
+        this.consumoMedio  = 0.0;
+        this.nViagens      = 0;
+    }
+
+
     public Veiculo(Veiculo v) {
         this.quilometragem = v.getQuilometragem();
         this.matricula     = v.getMatricula();
@@ -70,58 +80,57 @@ class Veiculo {
         return v;
     }
 
-    // public boolean equals(Object o) {
-    //     if (this == o)
-    //         return true;
-    //     if (( o == null) || (this.getClass() != o.getClass()))
-    //         return false;
-    //     Veiculo v = (Veiculo) o;
-    //     return (this.matricula == v.getMatricula());
-    // }
-    
-    public boolean equals(Veiculo v) {
-
-        if (v == null){
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (( o == null) || (this.getClass() != o.getClass()))
             return false;
-        }
+        Veiculo v = (Veiculo) o;
         return (this.matricula == v.getMatricula());
     }
 
-    public double getQuilometragem()
-    { return quilometragem; }
-
-    public void setQuilometragem()
-    { this.quilometragem = quilometragem; }
-
-    public String getMatricula()
-    { return matricula; }
-
-    public void setMatricula()
-    { this.matricula = matricula; }
-
-    public double getCapacidade()
-    { return capacidade; }
-
-    public void setCapacidade()
-    { this.capacidade = capacidade; }
-
-    public double getDeposito()
-    { return deposito; }
-
-    public void setDeposito()
-    { this.deposito = deposito; }
-
-    public double getConsumoMedio()
-    { return consumoMedio; }
-
-    public void setConsumoMedio()
-    { this.consumoMedio = consumoMedio; }
-
-    public int getNViagens()
-    { return nViagens; }
-
-    public void setNViagens()
-    { this.nViagens = nViagens; }
+    public int hashCode(){
+        int hash = 7;
+        hash = hash * 31 + this.matricula.hashCode();
+        return hash;
+    }
+    
+    public double getQuilometragem(){ 
+        return quilometragem; 
+    }
+    public void setQuilometragem(double quilometragem){
+        this.quilometragem = quilometragem;
+    }
+    public String getMatricula(){
+        return matricula;
+    }
+    public void setMatricula(String matricula){
+        this.matricula = matricula; 
+    }
+    public double getCapacidade(){
+        return capacidade;
+    }
+    public void setCapacidade(double capacidade){
+        this.capacidade = capacidade;
+    }
+    public double getDeposito(){
+        return deposito;
+    }
+    public void setDeposito(double deposito){
+        this.deposito = deposito;
+    }
+    public double getConsumoMedio(){
+        return consumoMedio;
+    }
+    public void setConsumoMedio(double consumoMedio){
+        this.consumoMedio = consumoMedio;
+    }
+    public int getNViagens(){
+        return nViagens;
+    }
+    public void setNViagens(int nViagens){
+        this.nViagens = nViagens;
+    }
 }
 
 public class Ex03Veiculo {

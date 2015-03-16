@@ -6,19 +6,16 @@ class Pixel{
     private int y;
     private int cor;
 
-    Pixel(int x1, int y1, int cor1){
-    
+    public Pixel(){
+        this.x = 0;
+        this.y = 0;
+        this.cor = 0;
+    }
+
+    public Pixel(int x1, int y1, int cor1){
         this.x = x1;
         this.y = y1;
-
-        if (cor1 < 0){
-            this.cor = 0;
-        } else if (cor1 > 255) {
-            this.cor = 255;
-        } else {
-            this.cor = cor1;
-        }
-    
+        changeColor(cor1);
     }
 
     Pixel(Pixel pixel){
@@ -113,19 +110,29 @@ class Pixel{
         return sb.toString();
     }
 
-    public boolean equals(Pixel pixel){
-
-        if (pixel == null){
-            return false;
-        }
-        if (this.x == pixel.getX() && 
-            this.y == pixel.getY() &&
-            this.cor == pixel.getColor()){
+    public boolean equals(Object o) {
+        if (this == o){
             return true;
         }
-
-        return false;
+        if ((o == null) || (this.getClass() != o.getClass())){
+            return false;	
+        }
+        Pixel pixel = (Pixel) o;
+        
+        return (this.x == pixel.getX() && 
+                this.y == pixel.getY() &&
+                this.cor == pixel.getColor());
     }
+
+    public int hashCode(){
+        int hash=7;
+        hash = hash*31+this.x;
+        hash = hash*31+this.y;
+        hash = hash*31+this.cor;
+        return hash;
+    }
+    
+    
 
     public Pixel clone(){
         return new Pixel(this);
@@ -145,7 +152,7 @@ public class Ex01Pixel {
         System.out.print(pixel2);
         System.out.print(pixel1.equals(pixel2));
 
-        // TODO: Better testing and equals?
+        // TODO: Better testing 
     }
     
 }

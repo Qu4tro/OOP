@@ -1,3 +1,5 @@
+import java.lang.Double;
+
 class Segmento{
 
     private double x1;
@@ -5,12 +7,25 @@ class Segmento{
     private double x2;
     private double y2;
 
-    Segmento(double x1, double y1, double x2, double y2){
+    public Segmento(){
+        this.x1 = 0;
+        this.y1 = 0;
+        this.x2 = 0;
+        this.y2 = 0;
+    }
+
+    public Segmento(double x1, double y1, double x2, double y2){
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-    
+    }
+
+    public Segmento(Segmento s){
+        this.x1 = s.getX1();
+        this.x2 = s.getX2();
+        this.y1 = s.getY1();
+        this.y2 = s.getY2();
     }
 
     public double comprimento(){
@@ -73,22 +88,35 @@ class Segmento{
         this.y2 = y;
     }
 
-    public boolean equals(Segmento segmento){
-        if (segmento == null){
-            return false;
-        }
-        if (this.x1 == segmento.getX1() &&
-            this.y1 == segmento.getY1() &&
-            this.x2 == segmento.getX2() &&
-            this.y2 == segmento.getY2()){
+    public boolean equals(Object o) {
+        if (this == o){
             return true;
         }
-        return false;
+        if ((o == null) || (this.getClass() != o.getClass())){
+            return false;	
+        }
+        Segmento segmento = (Segmento) o;
+
+        return (this.x1 == segmento.getX1() &&
+                this.y1 == segmento.getY1() &&
+                this.x2 == segmento.getX2() &&
+                this.y2 == segmento.getY2());
     }
+
+    public int hashCode(){
+        int hash=7;
+        hash = hash * 31 + Double.hashCode(this.x1);
+        hash = hash * 31 + Double.hashCode(this.x2);
+        hash = hash * 31 + Double.hashCode(this.y1);
+        hash = hash * 31 + Double.hashCode(this.y2);
+        return hash;
+    }
+    
 
     public Segmento clone(){
         return new Segmento(this.x1, this.y1, this.x2, this.y2);
     }
+
 
 
 
@@ -102,7 +130,7 @@ public class Ex02Segmento {
         System.out.println(segmento);
         System.out.println(segmento.comprimento());
 
-        // TODO: Better equals and better testing
+        // TODO: better testing
         
     }
 
