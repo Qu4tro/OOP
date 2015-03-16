@@ -1,4 +1,3 @@
-
 class Rectangulo {
 
     class Point {
@@ -6,7 +5,17 @@ class Rectangulo {
         private double x;
         private double y;
 
-        Point(double x, double y){
+        public Point(){
+            this.x = 0; 
+            this.y = 0; 
+        }
+
+        public Point(Point p){
+            this.x = p.getX();
+            this.y = p.getY();
+        }
+
+        public Point(double x, double y){
             this.x = x;
             this.y = y;
         }
@@ -23,9 +32,14 @@ class Rectangulo {
         public double getX(){
             return this.x;
         }
-
         public double getY(){
             return this.y;
+        }
+        public void setX(double x) {
+            this.x = x;
+        }
+        public void setY(double y) {
+            this.y = y;
         }
 
         public Point clone(){
@@ -35,6 +49,25 @@ class Rectangulo {
         public String toString(){
             return "(" + this.x + ", " + this.y + ")";
         }
+
+        public boolean equals(Object o) {
+            if (this == o){
+                return true;
+            }
+            if ((o == null) || (this.getClass() != o.getClass())){
+                return false;	
+            }
+            Point point = (Point) o;
+            
+            return point.getX() == this.x && point.getY() == this.y;
+        }
+
+        public int hashCode(){
+            int hash = 7;
+            hash = hash * 31 + Double.hashCode(this.x);
+            hash = hash * 31 + Double.hashCode(this.y);
+            return hash;
+        }
         
 
     }
@@ -43,6 +76,17 @@ class Rectangulo {
     private Point p2;
     private Point p3;
     private Point p4;
+
+
+    Rectangulo(){
+        this.p1 = new Point(); this.p2 = new Point(); 
+        this.p3 = new Point(); this.p4 = new Point();
+    }
+
+    Rectangulo(Rectangulo r){
+        this.p1 = r.getP1(); this.p2 = r.getP2(); 
+        this.p3 = r.getP3(); this.p4 = r.getP4();
+    }
 
     Rectangulo(double x1, double y1, double x2, double y2) {
         this.p1 = new Point(x1, y1); this.p2 = new Point(x2, y1); 
@@ -86,13 +130,65 @@ class Rectangulo {
         return p1.toString() + p4.toString();
     }
 
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if ((o == null) || (this.getClass() != o.getClass())){
+            return false;	
+        }
+        Rectangulo r = (Rectangulo) o;
+        
+        return this.p1.equals(r.getP1()) && 
+               this.p2.equals(r.getP2()) &&
+               this.p3.equals(r.getP3()) &&
+               this.p4.equals(r.getP4());
+    }
+
+    public int hashCode(){
+        int hash = 7;
+        hash = hash * 31 + p1.hashCode();
+        hash = hash * 31 + p2.hashCode();
+        hash = hash * 31 + p3.hashCode();
+        hash = hash * 31 + p4.hashCode();
+        return hash;
+    }
+    
+    
+
+    public Point getP1() {
+        return p1;
+    }
+    public Point getP2() {
+        return p2;
+    }
+    public Point getP3() {
+        return p3;
+    }
+    public Point getP4() {
+        return p4;
+    }
+
+    public void setP1(Point p1) {
+        this.p1 = p1;
+    }
+    public void setP2(Point p2) {
+        this.p2 = p2;
+    }
+    public void setP3(Point p3) {
+        this.p3 = p3;
+    }
+    public void setP4(Point p4) {
+        this.p4 = p4;
+    }
+
 }
 
 public class Ex05Rectangulo {
 
     public static void main(String[] args) {
 
-        // TODO: Equals and Testing on Main
+    // TODO: Testing on Main
         
     }
     
