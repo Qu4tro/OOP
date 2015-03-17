@@ -18,6 +18,9 @@ class Duration {
         seconds %= 60;
     }
 
+    public long getTotalMilliseconds(){
+        return durationInMiliseconds;
+    }
     public int getMiliseconds(){
         return miliseconds; 
     }
@@ -30,6 +33,26 @@ class Duration {
     public String toString(){
         return minutes + "M" + seconds + "." + miliseconds + "s";
     }
+
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if ((o == null) || (this.getClass() != o.getClass())){
+            return false;	
+        }
+        Duration d = (Duration) o;
+        
+        return durationInMiliseconds == d.getTotalMilliseconds();
+    }
+
+    public int hashCode(){
+        int hash = 7;
+        hash = hash * 31 + Long.hashCode(this.durationInMiliseconds);
+        return hash;
+    }
+    
+    
 
 }
 
@@ -78,11 +101,12 @@ class CronometroDS {
         String str = beginDate().toString();
         str += "--- (";
         str += firstTime().getSeconds();
-        str += "s) --->";
+        str += "s) ---> ";
 
         str += firstStopDate().toString();
+        str += "--- (";
         str += secondTime().getSeconds();
-        str += "s) --->";
+        str += "s) ---> ";
 
         str += endDate().toString();
     
@@ -93,9 +117,8 @@ class CronometroDS {
 public class Ex08Cronometro {
 
     public static void main(String[] args) {
-        
-        // TODO: Needs testing
-
+        System.out.println(timeit());
+        // TODO: Testing
     }
     
     public static CronometroDS timeit(){
