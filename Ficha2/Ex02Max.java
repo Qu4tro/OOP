@@ -5,27 +5,23 @@ public class Ex02Max {
     public static void main(String args[]){
 
         Scanner arg = new Scanner(args[0]);
-        int N = arg.nextInt();
+        int N = arg.nextInt(); // Number of elements to scan
 
-        int[] array = new int[N];
-
-        int max = Integer.MIN_VALUE;
+        int temp;
+        Scanner input = new Scanner(System.in);
+        int max = input.nextInt();
         int indexMax = 0;
 
-        int x;
-        Scanner input = new Scanner(System.in);
-
-        for(int i=0; i < N; i++){
-            x = input.nextInt();
-            array[i] = x;
+        for(int i = 1; i < N; i++){
+            temp = input.nextInt();
             
-            if (x > max){
-                max = x;
+            if (temp > max){
+                max = temp;
                 indexMax = i;
             }
         }
 
-        System.out.printf("Maior nº é o %d, no índice %d\n", max, indexMax);
+        System.out.println("Maior nº é o " + max + ", no índice " + indexMax);
 
     }
 }
