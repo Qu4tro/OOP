@@ -17,6 +17,15 @@ class Produto {
     private float buyingPrice;
     private float sellingPrice;
 
+    Produto() {
+        this.code = "";
+        this.name = "";
+        this.stock = 0;
+        this.stockMinimo = 0;
+        this.buyingPrice = 0;
+        this.sellingPrice = 0;
+    }
+
     Produto(String code, String name, int stockMinimo, float buyingPrice) {
         this.code = code;
         this.name = name;
@@ -24,6 +33,15 @@ class Produto {
         this.stockMinimo = stockMinimo;
         this.buyingPrice = buyingPrice;
         this.sellingPrice = 0;
+    }
+
+    Produto(Produto p) {
+        this.code = p.getCode();
+        this.name = p.getName();
+        this.stock = p.getStock();
+        this.stockMinimo = p.getStockMinimo();
+        this.buyingPrice = p.getBuyingPrice();
+        this.sellingPrice = p.getSellingPrice();
     }
 
 
@@ -82,11 +100,28 @@ class Produto {
     }
 
     public Produto clone(){
-        Produto p = new Produto(this.code, this.name, this.stockMinimo, this.buyingPrice);
-        p.addStock(this.stock);
-        p.setSellingPrice(this.sellingPrice);
-        return p;
+        return new Produto(this);
     }
+
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if ((o == null) || (this.getClass() != o.getClass())){
+            return false;	
+        }
+        Produto p = (Produto) o;
+        
+        return code == p.getCode();
+    }
+
+    public int hashCode(){
+        int hash = 7;
+        hash = hash * 31 + this.code.hashCode();
+        return hash;
+    }
+    
+    
 }
 
 
@@ -94,7 +129,7 @@ public class Ex06Produto {
     
     public static void main(String[] args) {
 
-        // TODO: Equals, testing
+        // TODO: Testing
         
     }
     

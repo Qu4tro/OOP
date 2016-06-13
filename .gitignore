@@ -2,6 +2,9 @@
 *.bluej
 .*.swp
 .*.un~
+*.zip
+
+.idea
 
 # Package Files #
 *.jar
