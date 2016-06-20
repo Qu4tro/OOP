@@ -31,15 +31,14 @@ public class MsgMap {
             msgBox.put(entry.getKey(),
                        (ArrayList<Mensagem>) entry.getValue().stream()
                                                              .filter(m -> !(m.getTexto().contains(palavra)))
-                                                             .collect(Collectors.toList());
+                                                             .collect(Collectors.toList()));
         }
     }
 
     public Map<String, List<Mensagem>> msgDeRemetente(){
+        ;
 
-        
-
-
+        return null;
     }
 
 
