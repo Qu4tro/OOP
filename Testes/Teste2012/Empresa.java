@@ -44,12 +44,22 @@ public class Empresa {
     }
 
     public boolean existeServicoComDistanciaMaiorQue(double dist){
-        return veiculos.firstEntry()
-                       .getValue()
-                       .getServicosContratados()
-                       .stream()
-                       .mapToDouble(c -> c.getDistancia())
-                       .sum() > dist;
+
+        // return veiculos.firstEntry()
+        //                .getValue()
+        //                .getServicosContratados()
+        //                .stream()
+        //                .mapToDouble(c -> c.getDistancia())
+        //                .sum() > dist;
+
+        double total = 0;
+        Veiculo veiculoComMaisKms = veiculos.firstEntry().getValue();
+
+        for (Contratavel c: veiculoComMaisKms.getServicosContratados()) {
+            total += c.getDistancia() ;
+        }
+
+        return total > dist;
     }
     
 }
